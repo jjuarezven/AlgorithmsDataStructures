@@ -1,4 +1,6 @@
-﻿namespace LinkedLists
+﻿using Common;
+
+namespace LinkedLists
 {
     internal class DoublyLinkedList
     {

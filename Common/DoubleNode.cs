@@ -1,6 +1,6 @@
-﻿namespace LinkedLists
+﻿namespace Common
 {
-    internal class DoubleNode
+    public class DoubleNode
     {
         public int? Data { get; set; }
         public DoubleNode? Next { get; set; }

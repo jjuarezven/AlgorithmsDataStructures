@@ -1,4 +1,4 @@
-﻿namespace LinkedLists
+﻿namespace Common
 {
     public class Node
     {
