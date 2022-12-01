@@ -2,31 +2,31 @@
 
 namespace Stack
 {
-    internal class StackWithLinkedList
+    internal class StackWithLinkedList<T>
     {
         public int Count { get; private set; }
-        private SingleLinkedList list;
+        private SingleLinkedList<T> list;
 
         public StackWithLinkedList()
         {
-            list = new SingleLinkedList();
+            list = new SingleLinkedList<T>();
         }
 
         // Push is adding a node in the beginning of the collection
-        public void Push(int value)
+        public void Push(T value)
         {
             list.AddAtStart(value);
             Count++;
         }
 
-        public int Pop()
+        public T Pop()
         {
-            int result;
+            T result;
             if (list.Length > 0)
             {
                 var node = list.FindNodeByIndex(1);
                 result = node.Data;
-                list.Delete(1);
+                list.DeleteNodeByValue(result);
                 Count--;
             }
             else
@@ -36,9 +36,9 @@ namespace Stack
             return result;
         }
 
-        public int Peek()
+        public T Peek()
         {
-            int result;
+            T result;
             if (list.Length > 0)
             {
                 var node = list.FindNodeByIndex(1);

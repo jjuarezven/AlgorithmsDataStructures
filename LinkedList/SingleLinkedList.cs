@@ -3,22 +3,22 @@ using Common;
 
 namespace LinkedLists
 {
-    public class SingleLinkedList : IEnumerable
+    public class SingleLinkedList<T> : IEnumerable
     {
-        private Node head;
-        private Node current;
+        private Node<T> head;
+        private Node<T> current;
         public int Length { get; private set; }
 
         public SingleLinkedList()
         {
-            head = new Node();
+            head = new Node<T>();
         }
 
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
-                var result = -1;
+                T? result = default;
                 current = FindNodeByIndex(index);
                 if (current is not null)
                 {
@@ -54,7 +54,7 @@ namespace LinkedLists
             }
         }
 
-        public void AddAtEnd(int nodeData)
+        public void AddAtEnd(T nodeData)
         {
             // traverse the list to get the last node
             current = head;
@@ -64,7 +64,7 @@ namespace LinkedLists
             }
 
             // create a new node and set info
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = nodeData
             };
@@ -74,10 +74,10 @@ namespace LinkedLists
             Length++;
         }
 
-        public void AddAtStart(int nodeData)
+        public void AddAtStart(T nodeData)
         {
             // create a new node and set info
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = nodeData,
                 Next = head.Next
@@ -88,22 +88,28 @@ namespace LinkedLists
             Length++;
         }
 
-        public void AddAfter(int nodeDataPosition, int nodeData)
+        public void AddAtIndex(int index, T nodeData)
         {
-            current = Find(nodeDataPosition);
-            if (current is not null)
+            if (index > Length || index < 0)
+                throw new ArgumentOutOfRangeException();
+            if (index == 1)
+                AddAtStart(nodeData);
+            // Length - 2 because head stores no data in this implementation
+            else if (index == Length)
+                AddAtEnd(nodeData);
+            else
             {
-                AddNodeDinamically(nodeData);
-            }
-            Length++;
-        }
-
-        public void AddBefore(int nodeDataPosition, int nodeData)
-        {
-            current = FindPrevious(nodeDataPosition);
-            if (current is not null)
-            {
-                AddNodeDinamically(nodeData);
+                current = head;
+                for (int i = 0; i < index - 1; i++)
+                {
+                    current = current.Next;
+                }
+                var newNode = new Node<T>
+                {
+                    Data = nodeData,
+                    Next = current.Next
+                };
+                current.Next = newNode;
             }
             Length++;
         }
@@ -120,9 +126,9 @@ namespace LinkedLists
             return head.Next is null;
         }
 
-        public Node Find(int nodeData)
+        public Node<T> FindNodeByValue(T nodeData)
         {
-            Node? result = null;
+            Node<T>? result = null;
 
             if (!IsEmpty())
             {
@@ -131,7 +137,7 @@ namespace LinkedLists
                 while (current.Next is not null)
                 {
                     current = current.Next;
-                    if (current.Data == nodeData)
+                    if (current.Data.Equals(nodeData))
                     {
                         result = current;
                         break;
@@ -142,7 +148,7 @@ namespace LinkedLists
             return result;
         }
 
-        public int FindNodeIndexByData(int nodeData)
+        public int FindNodeIndexByData(T nodeData)
         {
             var index = -1;
 
@@ -154,7 +160,7 @@ namespace LinkedLists
                 {
                     current = current.Next;
                     index++;
-                    if (current.Data == nodeData)
+                    if (current.Data.Equals(nodeData))
                     {
                         return index;
                     }
@@ -164,9 +170,9 @@ namespace LinkedLists
             return index;
         }
 
-        public Node FindNodeByIndex(int nodeIndex)
+        public Node<T> FindNodeByIndex(int nodeIndex)
         {
-            Node? node = null;
+            Node<T>? node = null;
             var index = -1;
 
             if (!IsEmpty())
@@ -190,13 +196,13 @@ namespace LinkedLists
 
         // Finds the previous node, if nodeIndex is in the first node returns head node
         // if nodeIndex is not found returns last node
-        public Node FindPrevious(int nodeData)
+        public Node<T> FindPrevious(T nodeData)
         {
             if (!IsEmpty())
             {
                 current = head;
 
-                while (current.Next is not null && current.Next.Data != nodeData)
+                while (current.Next is not null && !current.Next.Data.Equals(nodeData))
                 {
                     current = current.Next;
                 }
@@ -204,29 +210,20 @@ namespace LinkedLists
             return current;
         }
 
-        public void Delete(int nodeData)
+        public void DeleteNodeByValue(T nodeData)
         {
             if (!IsEmpty())
             {
                 var previous = FindPrevious(nodeData);
-                var found = Find(nodeData);
+                var found = FindNodeByValue(nodeData);
                 if (found is not null)
                 {
                     // links the next node of the found node to its previous so the reference to found.Next is preserved
                     previous.Next = found.Next;
                     found.Next = null;
                 }
+                Length--;
             }
-        }
-
-        private void AddNodeDinamically(int nodeData)
-        {
-            var newNode = new Node
-            {
-                Data = nodeData,
-                Next = current.Next
-            };
-            current.Next = newNode;
         }
 
         public IEnumerator GetEnumerator()

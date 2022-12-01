@@ -4,7 +4,7 @@ namespace Sorting
 {
     internal static class BubbleSort
     {
-        public static void Sort(SingleLinkedList list)
+        public static void Sort(SingleLinkedList<int> list)
         {
             bool swapped;
 

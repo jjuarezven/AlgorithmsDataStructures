@@ -4,7 +4,7 @@ namespace Sorting
 {
     internal static class InsertionSort
     {
-        public static void Sort(SingleLinkedList list)
+        public static void Sort(SingleLinkedList<int> list)
         {
             for (int i = 1; i < list.Length; i++)
             {

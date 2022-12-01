@@ -1,13 +1,15 @@
 ﻿namespace Common
 {
-    public class Node
+    public class Node<T>
     {
-        public int Data { get; set; }
-        public Node? Next { get; set; }
+        public T Data { get; set; }
+        public Node<T>? Next { get; set; }
 
         public override string ToString()
         {
-            return $"[{Data}]";
+            if (Data == null)
+                return string.Empty;
+            return $"{Data}";
         }
     }
 }

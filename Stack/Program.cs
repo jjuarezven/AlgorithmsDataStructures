@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Stack;
 
-var stack = new StackImplementation();
+var stack = new StackImplementation<int>();
 Console.WriteLine("Stack using nodes");
 stack.Push(4);
 stack.Push(3);
@@ -19,7 +19,7 @@ Console.WriteLine($"Pop: {stack.Pop()}");
 
 Console.WriteLine();
 Console.WriteLine("Stack using linked list");
-var stack2 = new StackImplementation();
+var stack2 = new StackImplementation<int>();
 stack2.Push(4);
 stack2.Push(3);
 stack2.Push(2);

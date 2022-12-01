@@ -5,7 +5,7 @@ namespace Sorting
 {
     internal class Program
     {
-        static readonly SingleLinkedList list = new SingleLinkedList();
+        static readonly SingleLinkedList<int> list = new SingleLinkedList<int>();
 
         static Program()
         {
@@ -21,7 +21,7 @@ namespace Sorting
             list.AddAtEnd(80);
             list.AddAtEnd(55);
             Console.WriteLine("Unordered list:");
-            foreach (Node item in list)
+            foreach (Node<int> item in list)
             {
                 Console.WriteLine($"{item.Data}");
             }

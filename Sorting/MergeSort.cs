@@ -4,7 +4,7 @@ namespace Sorting
 {
     internal static class MergeSort
     {
-        public static void Sort(SingleLinkedList list)
+        public static void Sort(SingleLinkedList<int> list)
         {
             var orderedList = DivideList(list);
             Console.WriteLine("Ordered list:");
@@ -12,7 +12,7 @@ namespace Sorting
             Console.ReadLine();
         }
 
-        private static SingleLinkedList DivideList(SingleLinkedList list)
+        private static SingleLinkedList<int> DivideList(SingleLinkedList<int> list)
         {
             int length = list.Length;
             if (length < 2)
@@ -21,8 +21,8 @@ namespace Sorting
             }
 
             int middle = length / 2;
-            var left = new SingleLinkedList();
-            var right = new SingleLinkedList();
+            var left = new SingleLinkedList<int>();
+            var right = new SingleLinkedList<int>();
 
             for (var i = 0; i < middle; i++)
             {
@@ -40,9 +40,9 @@ namespace Sorting
             return Merge(tempLeft, tempRight);
         }
 
-        private static SingleLinkedList Merge(SingleLinkedList left, SingleLinkedList right)
+        private static SingleLinkedList<int> Merge(SingleLinkedList<int> left, SingleLinkedList<int> right)
         {
-            var mergedList = new SingleLinkedList();
+            var mergedList = new SingleLinkedList<int>();
             var leftIndex = 0;
             var rightIndex = 0;
 

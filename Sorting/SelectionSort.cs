@@ -4,7 +4,7 @@ namespace Sorting
 {
     internal static class SelectionSort
     {
-        public static void Sort(SingleLinkedList list)
+        public static void Sort(SingleLinkedList<int> list)
         {
             for (int i = 0; i < list.Length - 1; i++)
             {

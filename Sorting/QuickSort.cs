@@ -4,7 +4,7 @@ namespace Sorting
 {
     internal static class QuickSort
     {
-        public static void Sort(SingleLinkedList list)
+        public static void Sort(SingleLinkedList<int> list)
         {
             QuickSorts(list, 0, list.Length - 1);
             Console.WriteLine("Ordered list:");
@@ -12,7 +12,7 @@ namespace Sorting
             Console.ReadLine();
         }
 
-        private static void QuickSorts(SingleLinkedList list, int startIndex, int endIndex)
+        private static void QuickSorts(SingleLinkedList<int> list, int startIndex, int endIndex)
         {
             if (startIndex >= endIndex)
             {
@@ -25,7 +25,7 @@ namespace Sorting
             QuickSorts(list, pivotIndex + 1, endIndex);
         }
 
-        private static int PartList(SingleLinkedList list, int startIndex, int endIndex)
+        private static int PartList(SingleLinkedList<int> list, int startIndex, int endIndex)
         {
             int pivot = 0, pivotIndex = 0, n = 0;
 

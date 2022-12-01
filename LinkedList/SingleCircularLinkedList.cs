@@ -2,15 +2,15 @@
 
 namespace LinkedLists
 {
-    internal class SingleCircularLinkedList
+    internal class SingleCircularLinkedList<T>
     {
-        private Node? head;
-        private Node? tail;
+        private Node<T>? head;
+        private Node<T>? tail;
         public int Length { get; private set; }
 
-        public void AddAtStart(int nodeData)
+        public void AddAtStart(T nodeData)
         {
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = nodeData
             };
@@ -28,9 +28,9 @@ namespace LinkedLists
             Length++;
         }
 
-        public void AddAtEnd(int nodeData)
+        public void AddAtEnd(T nodeData)
         {
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = nodeData
             };
@@ -49,7 +49,7 @@ namespace LinkedLists
             Length++;
         }
 
-        public void AddAtPosition(int nodeData, int position)
+        public void AddAtPosition(T nodeData, int position)
         {
             if (position > Length || position < 1)
             {
@@ -57,7 +57,7 @@ namespace LinkedLists
                 return;
             }
 
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = nodeData
             };
@@ -104,7 +104,7 @@ namespace LinkedLists
             return !(Length > 0);
         }
 
-        public bool DeleteNodeByValue(int nodeData)
+        public bool DeleteNodeByValue(T nodeData)
         {
             if (!IsEmpty())
             {
@@ -139,13 +139,13 @@ namespace LinkedLists
             return false;
         }
 
-        private int GetNodeIndexByValue(int nodeData)
+        private int GetNodeIndexByValue(T nodeData)
         {
             var index = -1;
             var node = head;
             for (int i = 0; i < Length; i++)
             {
-                if (node.Data == nodeData)
+                if (node.Data.Equals(nodeData))
                 {
                     index = i;
                     break;
@@ -155,7 +155,7 @@ namespace LinkedLists
             return index;
         }
 
-        public Node FindNodeByValue(int nodeData)
+        public Node<T> FindNodeByValue(T nodeData)
         {
             if (IsEmpty())
             {
@@ -166,7 +166,7 @@ namespace LinkedLists
                 var node = head;
                 for (int i = 0; i < Length; i++)
                 {
-                    if (node.Data == nodeData)
+                    if (node.Data.Equals(nodeData))
                     {
                         return node;
                     }
@@ -180,7 +180,7 @@ namespace LinkedLists
         public void Clear()
         {
             var current = head.Next;
-            Node temp = null;
+            Node<T> temp = null;
             while (current != head)
             {
                 temp = current.Next;
@@ -192,7 +192,7 @@ namespace LinkedLists
             Length = 0;
         }
 
-        private void SetNodeAsHeader(Node newNode)
+        private void SetNodeAsHeader(Node<T> newNode)
         {
             // the new node needs to reference head as its Next
             newNode.Next = head;
@@ -202,14 +202,14 @@ namespace LinkedLists
             tail.Next = head;
         }
 
-        public Node FindPrevious(int nodeData)
+        public Node<T> FindPrevious(T nodeData)
         {
-            Node current = null;
+            Node<T> current = null;
             if (!IsEmpty())
             {
                 current = head;
 
-                while (current.Next.Data != nodeData)
+                while (!current.Next.Data.Equals(nodeData))
                 {
                     current = current.Next;
                 }

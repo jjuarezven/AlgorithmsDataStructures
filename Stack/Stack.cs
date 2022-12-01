@@ -2,21 +2,21 @@
 
 namespace Stack
 {
-    internal class StackImplementation
+    internal class StackImplementation<T>
     {
-        private Node? head;
-        private Node? current;
+        private Node<T>? head;
+        private Node<T>? current;
         public int Count { get; private set; }
 
         public StackImplementation()
         {
-            head = new Node();
+            head = new Node<T>();
         }
 
         // Push is adding a node in the beginning of the collection
-        public void Push(int value)
+        public void Push(T value)
         {
-            var newNode = new Node
+            var newNode = new Node<T>
             {
                 Data = value,
                 // preserve the reference to the current "next" of the head
@@ -26,9 +26,9 @@ namespace Stack
             Count++;
         }
 
-        public int Pop()
+        public T Pop()
         {
-            int result;
+            T result;
             if (head.Next is not null)
             {
                 current = head.Next;
@@ -45,9 +45,9 @@ namespace Stack
             return result;
         }
 
-        public int Peek()
+        public T Peek()
         {
-            int result;
+            T result;
             if (head.Next is not null)
             {
                 current = head.Next;
