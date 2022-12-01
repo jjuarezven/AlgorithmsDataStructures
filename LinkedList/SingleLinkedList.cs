@@ -112,6 +112,7 @@ namespace LinkedLists
         {
             // garbage colector reclaims unused memory
             head.Next = null;
+            Length = 0;
         }
 
         public bool IsEmpty()

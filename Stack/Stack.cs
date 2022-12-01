@@ -33,7 +33,7 @@ namespace Stack
             {
                 current = head.Next;
                 result = current.Data;
-                
+
                 head.Next = current.Next;
                 current.Next = null;
                 Count--;
@@ -66,7 +66,7 @@ namespace Stack
             while (current.Next is not null)
             {
                 current = current.Next;
-                Console.WriteLine($"{current.Data}");                
+                Console.WriteLine($"{current.Data}");
             }
         }
     }
