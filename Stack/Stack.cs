@@ -69,5 +69,7 @@ namespace Stack
                 Console.WriteLine($"{current.Data}");
             }
         }
+
+        public bool IsEmpty() => head.Next == null;
     }
 }

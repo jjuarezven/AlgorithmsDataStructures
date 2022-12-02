@@ -24,7 +24,7 @@ namespace Stack
             T result;
             if (list.Length > 0)
             {
-                var node = list.FindNodeByIndex(1);
+                var node = list.FindNodeByIndex(0);
                 result = node.Data;
                 list.DeleteNodeByValue(result);
                 Count--;
@@ -41,7 +41,7 @@ namespace Stack
             T result;
             if (list.Length > 0)
             {
-                var node = list.FindNodeByIndex(1);
+                var node = list.FindNodeByIndex(0);
                 result = node.Data;
             }
             else
