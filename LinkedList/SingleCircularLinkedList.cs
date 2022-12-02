@@ -10,10 +10,7 @@ namespace LinkedLists
 
         public void AddAtStart(T nodeData)
         {
-            var newNode = new Node<T>
-            {
-                Data = nodeData
-            };
+            var newNode = new Node<T>(nodeData);
 
             if (head is null)
             {
@@ -30,10 +27,7 @@ namespace LinkedLists
 
         public void AddAtEnd(T nodeData)
         {
-            var newNode = new Node<T>
-            {
-                Data = nodeData
-            };
+            var newNode = new Node<T>(nodeData);
 
             if (head is null)
             {
@@ -57,10 +51,7 @@ namespace LinkedLists
                 return;
             }
 
-            var newNode = new Node<T>
-            {
-                Data = nodeData
-            };
+            var newNode = new Node<T>(nodeData);
 
             if (position == 1)
             {
