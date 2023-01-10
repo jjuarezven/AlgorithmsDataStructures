@@ -13,10 +13,7 @@ namespace Queue
         public void Enqueue(T value)
         {
             var lastNode = FindLastNode();
-            var newNode = new Node<T>
-            {
-                Data = value
-            };
+            var newNode = new Node<T>(value);
             lastNode.Next = newNode;
             Count++;
         }
@@ -49,7 +46,7 @@ namespace Queue
             }
             else
             {
-                throw new InvalidOperationException("Stack is empty");
+                throw new InvalidOperationException("Queue is empty");
             }
             return result;
         }

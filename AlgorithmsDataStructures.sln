@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stack", "Stack\Stack.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{C8CDBBA9-2086-4F70-BE9A-54DE53A2CD5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queue", "Queue\Queue.csproj", "{C3D78730-BF75-4599-B574-E3DEBEC51CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue", "Queue\Queue.csproj", "{C3D78730-BF75-4599-B574-E3DEBEC51CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees", "Trees\Trees.csproj", "{28945E79-20CF-4916-ACE7-76B7603CD180}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C3D78730-BF75-4599-B574-E3DEBEC51CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D78730-BF75-4599-B574-E3DEBEC51CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D78730-BF75-4599-B574-E3DEBEC51CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28945E79-20CF-4916-ACE7-76B7603CD180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28945E79-20CF-4916-ACE7-76B7603CD180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28945E79-20CF-4916-ACE7-76B7603CD180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28945E79-20CF-4916-ACE7-76B7603CD180}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
